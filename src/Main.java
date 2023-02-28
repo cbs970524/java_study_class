@@ -8,6 +8,8 @@ public class Main {
         gmbs.camera = camera;
 
 
+        gmbs.buyMic("sure");
+
         Person p1 = new Person("beomsik",27,'m');
         Person p2 = new Person("gildong");
         gmbs.addNewMember(p1);
