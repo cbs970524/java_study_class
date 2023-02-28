@@ -6,11 +6,7 @@ public class Main {
         ArrayList<String> camera = new ArrayList<>(Arrays.asList("sony","samsung"));
         BroadcastTeam gmbs = new BroadcastTeam();
         gmbs.camera = camera;
-        gmbs.showInfo();
-        System.out.println(gmbs.camera);
-        gmbs.buyCamera("lg");
-        System.out.println(gmbs.camera);
-        gmbs.fixCamera("samsang");
-        System.out.println(gmbs.camera);
+        gmbs.broadcasting("주일예배");
+
     }
 }
