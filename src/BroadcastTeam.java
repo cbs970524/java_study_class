@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class BroadcastTeam {
     ArrayList<String> team;
-    ArrayList<String> member;
+    ArrayList<Person> member;
     ArrayList<String> camera;
     ArrayList<String> speaker;
     ArrayList<String> mic;
@@ -11,13 +10,13 @@ public class BroadcastTeam {
 
     void BroadcastTeam(){
         this.team = new ArrayList<>();
-        this.member = new ArrayList<>();
+        this.member = new ArrayList<Person>();
         this.camera = new ArrayList<>();
         this.speaker = new ArrayList<>();
         this.mic = new ArrayList<>();
         this.computer = new ArrayList<>();
     }
-    void BroadcastTeam(ArrayList team, ArrayList member, ArrayList camera, ArrayList speaker, ArrayList mic, ArrayList computer){
+    void BroadcastTeam(ArrayList team, ArrayList<Person> member, ArrayList camera, ArrayList speaker, ArrayList mic, ArrayList computer){
         this.team = team;
         this.member = member;
         this.camera = camera;
@@ -33,7 +32,7 @@ public class BroadcastTeam {
             System.out.println("장비 또는 인원을 등록해주세요.");
         }
     }
-    void addNewMember(String member){
+    void addNewMember(Person member){
         this.member.add(member);
     }
     void deleteMember(String member){

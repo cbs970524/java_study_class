@@ -6,7 +6,11 @@ public class Main {
         ArrayList<String> camera = new ArrayList<>(Arrays.asList("sony","samsung"));
         BroadcastTeam gmbs = new BroadcastTeam();
         gmbs.camera = camera;
-        gmbs.broadcasting("주일예배");
 
+
+        Person p1 = new Person("beomsik",27,'m');
+        Person p2 = new Person("gildong");
+        gmbs.addNewMember(p1);
+        gmbs.addNewMember(p2);
     }
 }
