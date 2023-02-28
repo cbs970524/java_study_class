@@ -7,14 +7,8 @@ public class Speaker {
     Speaker(String modelName){
         this.modelName = modelName;
     }
-    Speaker(String modelName, String manufacturer){
+    Speaker(String modelName, String type){
         this.modelName = modelName;
-        this.manufacturer = manufacturer;
-    }
-    Speaker(String modelName, String manufacturer, int price, String type){
-        this.modelName = modelName;
-        this.manufacturer = manufacturer;
-        this.price = price;
         this.type = type;
     }
 

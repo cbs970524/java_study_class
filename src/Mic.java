@@ -7,14 +7,8 @@ public class Mic {
     Mic(String modelName){
         this.modelName = modelName;
     }
-    Mic(String modelName, String manufacturer){
+    Mic(String modelName, String type){
         this.modelName = modelName;
-        this.manufacturer = manufacturer;
-    }
-    Mic(String modelName, String manufacturer, int price, String type){
-        this.modelName = modelName;
-        this.manufacturer = manufacturer;
-        this.price = price;
         this.type = type;
     }
 
