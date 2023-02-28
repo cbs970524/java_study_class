@@ -8,7 +8,7 @@ public class BroadcastTeam {
     ArrayList<String> mic;
     ArrayList<String> computer;
 
-    void BroadcastTeam(){
+    BroadcastTeam(){
         this.team = new ArrayList<>();
         this.member = new ArrayList<Person>();
         this.camera = new ArrayList<>();
@@ -16,7 +16,7 @@ public class BroadcastTeam {
         this.mic = new ArrayList<>();
         this.computer = new ArrayList<>();
     }
-    void BroadcastTeam(ArrayList team, ArrayList<Person> member, ArrayList camera, ArrayList speaker, ArrayList mic, ArrayList computer){
+    BroadcastTeam(ArrayList team, ArrayList<Person> member, ArrayList camera, ArrayList speaker, ArrayList mic, ArrayList computer){
         this.team = team;
         this.member = member;
         this.camera = camera;
