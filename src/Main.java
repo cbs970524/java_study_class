@@ -19,11 +19,16 @@ public class Main {
 
         //Speaker[] s1 = new Speaker[]{new Speaker("jbl123", "active")};
         Speaker s1 = new Speaker("jbl123", "active");
-        gmbs.buySpeaker(s1);
-        Mic[] m1 = new Mic[]{new Mic("sure123", "dynamic")};
-        gmbs.buyMic(m1);
-        Computer[] com1 = new Computer[]{new Computer("com1")};
-        gmbs.buyComputer(com1);
+        Speaker[] speakers = new Speaker[10];
+        speakers[0]=s1;
+        gmbs.buySpeaker(speakers);
+        Mic[] mics = new Mic[10];
+        Mic m1 = new Mic("shure123", "dynamic");
+        mics[0]=m1;
+        gmbs.buyMic(mics);
+        Computer[] computers = new Computer[10];
+        Computer com1 = new Computer("com1");
+        gmbs.buyComputer(computers);
 
         gmbs.broadcasting(p1,c1,s1,m1,com1);
     }

@@ -1,11 +1,15 @@
-public class Camera {
-    String modelName;
-    String manufacturer;
-    int price;
+public class Camera extends Equipment{
+//    String modelName;
+//    String manufacturer;
+//    int price;
     Camera(String modelName){
-        this.modelName = modelName;
+        super(modelName);
+//        this.modelName = modelName;
     }
-    void useCam(String modelName){
+    void use(String modelName){
         System.out.println(modelName + " 카메라를 사용합니다.");
+    }
+    void setting(String modelName){
+        System.out.println(modelName + " 카메라를 설치합니다.");
     }
 }

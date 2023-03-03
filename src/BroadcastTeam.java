@@ -1,10 +1,9 @@
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BroadcastTeam {
+public class BroadcastTeam extends Department{
     List<String> team;
-    List<Person> member;
+    //List<Person> member;
     List<Camera> camera;
     List<Speaker> speaker;
     List<Mic> mic;
@@ -18,7 +17,7 @@ public class BroadcastTeam {
         this.mic = new ArrayList<Mic>();
         this.computer = new ArrayList<Computer>();
     }
-    BroadcastTeam(ArrayList team, ArrayList<Person> member, ArrayList<Camera> camera, ArrayList<Speaker> speaker, ArrayList<Mic> mic, ArrayList<Computer> computer){
+    BroadcastTeam(ArrayList<String> team, ArrayList<Person> member, ArrayList<Camera> camera, ArrayList<Speaker> speaker, ArrayList<Mic> mic, ArrayList<Computer> computer){
         this.team = team;
         this.member = member;
         this.camera = camera;
@@ -28,22 +27,29 @@ public class BroadcastTeam {
     }
     void broadcasting(Person member, Camera camera, Speaker speaker, Mic mic, Computer computer) {
         if(this.member!=null && this.camera!=null && this.speaker!=null && this.mic!=null && this.computer!=null){
-            camera.useCam(camera.modelName);
-            speaker.useSpeaker(speaker.modelName);
-            mic.useMic(mic.modelName);
-            computer.streaming(computer.computerName);
-            System.out.println(member+"가"+camera+"와"+speaker+"와"+mic+"를 이용해 방송을 시작합니다.");
+            camera.setting(camera.modelName);
+            camera.use(camera.modelName);
+            speaker.setting(speaker.modelName);
+            speaker.use(speaker.modelName);
+            mic.setting(mic.modelName);
+            mic.use(mic.modelName);
+            computer.setting(computer.modelName);
+            computer.streaming(computer.modelName);
         }
         else{
             System.out.println("장비 또는 인원을 등록해주세요.");
         }
     }
+    void working(Person person, Person[] persons){
+        //장비도 매개변수로 받아야되는데... 그럼 오버라이딩이 아니게 되는데...
+    }
+    /*
     void addNewMember(Person member){
         this.member.add(member);
     }
     void deleteMember(Person member){
         this.member.remove(member);
-    }
+    }*/
     void buyCamera(Camera[] camera){
         for(int i=0;i<camera.length;i++) {
             this.camera.add(camera[i]);
@@ -113,8 +119,8 @@ public class BroadcastTeam {
         this.mic.remove(mic);
     }
 
-    void showInfo(){
-
-        System.out.println("방송부의 인원은 "+member+"가 있으며 장비는 "+camera+speaker+mic+computer + "가 있습니다.");
+    public String toString(){
+        System.out.println("방송부의 인원은 "+member.toString()+"가 있으며 장비는 "+camera.toString()+speaker.toString()+mic.toString()+computer.toString() + "가 있습니다.");
+        return null;
     }
 }
