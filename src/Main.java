@@ -4,32 +4,40 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        BroadcastTeam gmbs = new BroadcastTeam();
-        Camera c1 = new Camera("cam1");
-        Camera c2 = new Camera("cam2");
-        Camera[] cameras = new Camera[10];
-        cameras[0] = c1;
-        cameras[1] = c2;
-        gmbs.buyCamera(cameras);
+        List<Department> team = new ArrayList<>();
 
-        Person p1 = new Person("beomsik",27,'m');
-        Person p2 = new Person("gildong",25,'f');
-        gmbs.addNewMember(p1);
-        gmbs.addNewMember(p2);
+        team.add(new BroadcastTeam());
+        team.add(new WorshipTeam());
 
-        //Speaker[] s1 = new Speaker[]{new Speaker("jbl123", "active")};
-        Speaker s1 = new Speaker("jbl123", "active");
-        Speaker[] speakers = new Speaker[10];
-        speakers[0]=s1;
-        gmbs.buySpeaker(speakers);
-        Mic[] mics = new Mic[10];
-        Mic m1 = new Mic("shure123", "dynamic");
-        mics[0]=m1;
-        gmbs.buyMic(mics);
-        Computer[] computers = new Computer[10];
-        Computer com1 = new Computer("com1");
-        gmbs.buyComputer(computers);
+        Person p1 = new Person("최범식",20,'m');
+        Person p2 = new Person("홍길동",30,'m');
+        Person p3 = new Person("이순신",10,'m');
+        Person p4 = new Person("신사임당",15,'f');
+        Person p5 = new Person("세종대왕",25,'m');
+        Person p6 = new Person("율곡이이",35,'m');
 
-        gmbs.broadcasting(p1,c1,s1,m1,com1);
+        team.get(0).addNewMember(p1);
+        team.get(0).addNewMember(p2);
+        team.get(0).addNewMember(p3);
+        team.get(1).addNewMember(p4);
+        team.get(1).addNewMember(p5);
+        team.get(1).addNewMember(p6);
+
+        team.get(0).newLeader(team.get(0).member.get(0));
+        team.get(1).newLeader(team.get(1).member.get(0));
+
+        Camera cam1 = new Camera("sony");
+        Computer com1 = new Computer("samsung");
+        Mic mic1 = new Mic("sm58","dynamic");
+        Mic mic2 = new Mic("beta58","condenser");
+        Speaker sp1 = new Speaker("vp7212","active");
+
+        List<Equipment> equipmentList = new ArrayList<>(Arrays.asList(cam1,com1,mic1,sp1,mic2));
+
+        BroadcastTeam gmbs = (BroadcastTeam) team.get(0);
+        gmbs.buyEquipment(equipmentList);
+
+        team.get(0).working();
+        team.get(1).working();
     }
 }

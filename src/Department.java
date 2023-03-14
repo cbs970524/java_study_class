@@ -1,8 +1,9 @@
 import java.util.List;
 
 public class Department {
-    List<Person> member;
-    int money=1000000;
+    protected Person leader;
+    protected List<Person> member;
+    protected int money=1000000;
 
     void addNewMember(Person member){
         this.member.add(member);
@@ -13,14 +14,19 @@ public class Department {
     void useMoney(int money){
         this.money -= money;
     }
-    void getMoney(int money){
+    void addMoney(int money){
         this.money += money;
     }
-
-    void working(Person person, Person[] persons){
-        System.out.println(person+"의 주도 하에 "+persons+"이(가) 활동합니다.");
+    void newLeader(Person member){
+        if(!this.member.contains(member)){
+            System.out.println("해당 부서의 멤버가 아닙니다.");
+        }
+        else{
+            this.leader = this.member.get(this.member.indexOf(member));
+        }
     }
-    void marketing(){
-        System.out.println("부서를 홍보합니다.");
+
+    void working(){
+        System.out.println(this.leader.toString()+"의 주도 하에 "+this.member.toString()+"이(가) 활동합니다.");
     }
 }
