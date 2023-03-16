@@ -12,6 +12,6 @@ public class Camera extends Equipment{
     }
     @Override
     public String toString(){
-        return "Camera";
+        return "model name is " + this.modelName;
     }
 }

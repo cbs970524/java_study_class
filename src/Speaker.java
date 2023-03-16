@@ -19,6 +19,6 @@ public class Speaker extends Equipment{
     }
     @Override
     public String toString(){
-        return "Speaker";
+        return "model name is " + this.modelName + "type is " + this.type;
     }
 }

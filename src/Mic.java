@@ -22,6 +22,6 @@ public class Mic extends Equipment{
     }
     @Override
     public String toString(){
-        return "Mic";
+        return "model name is " + this.modelName + "type is " + this.type;
     }
 }

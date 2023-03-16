@@ -1,12 +1,13 @@
 public class Person {
     String name;
     int age;
-    char gender;
+//    char gender;
+    enum gender{} //enum 복잡한데..?
 
-    Person(String name, int age, char gender){
+    Person(String name, int age, String gender){
         this.name = name;
         this.age = age;
-        this.gender = gender;
+        //gender = gender;
     }
     @Override
     public String toString(){

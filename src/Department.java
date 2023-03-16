@@ -17,13 +17,8 @@ public class Department {
     void addMoney(int money){
         this.money += money;
     }
-    void newLeader(Person member){
-        if(!this.member.contains(member)){
-            System.out.println("해당 부서의 멤버가 아닙니다.");
-        }
-        else{
-            this.leader = this.member.get(this.member.indexOf(member));
-        }
+    void setLeader(Person member){
+        this.leader = member;
     }
 
     void working(){
