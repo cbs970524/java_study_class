@@ -3,29 +3,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BroadcastTeam extends Department{
-    //List<List<Equipment>> equipments;
-    List<Equipment> equipmentList;
+    ArrayList<Equipment> cameraList;
+    ArrayList<Equipment> computerList;
+    ArrayList<Equipment> micList;
+    ArrayList<Equipment> speakerList;
+    ArrayList<Equipment> otherList;
 
     BroadcastTeam(){
         this.member = new ArrayList<Person>();
-        this.equipmentList = new ArrayList<>();
+        this.cameraList = new ArrayList<>();
+        this.computerList = new ArrayList<>();
+        this.micList = new ArrayList<>();
+        this.speakerList = new ArrayList<>();
 
     }
-    BroadcastTeam(ArrayList<Person> member, ArrayList<Camera> camera, ArrayList<Computer> computer, ArrayList<Mic> mic, ArrayList<Speaker> speaker){
+    BroadcastTeam(ArrayList<Person> member, ArrayList<Equipment> camera, ArrayList<Equipment> computer, ArrayList<Equipment> mic, ArrayList<Equipment> speaker){
         this();
         this.member = member;
-        for(int i=0;i<camera.size();i++){
-            equipmentList.add(camera.get(i));
-        }
-        for(int i=0;i<computer.size();i++){
-            equipmentList.add(computer.get(i));
-        }
-        for(int i=0;i<mic.size();i++){
-            equipmentList.add(mic.get(i));
-        }
-        for(int i=0;i<speaker.size();i++){
-            equipmentList.add(speaker.get(i));
-        }
+        this.cameraList = camera;
+        this.computerList = computer;
+        this.micList = mic;
+        this.speakerList = speaker;
     }
     @Override
     void addNewMember(Person member){
@@ -53,32 +51,22 @@ public class BroadcastTeam extends Department{
             System.out.println("인원을 등록해주세요.");
             return;
         }
-        for(int i=0;i<this.equipmentList.size();i++){
-            if(this.equipmentList.get(i) instanceof Camera){
-                this.equipmentList.get(i).setting(((Camera) this.equipmentList.get(i)).modelName);
-                this.equipmentList.get(i).use(((Camera) this.equipmentList.get(i)).modelName);
-            }
-            else if(this.equipmentList.get(i) instanceof Computer){
-                this.equipmentList.get(i).setting(((Computer) this.equipmentList.get(i)).modelName);
-                this.equipmentList.get(i).use(((Computer) this.equipmentList.get(i)).modelName);
-                ((Computer) this.equipmentList.get(i)).streaming(((Computer) this.equipmentList.get(i)).modelName);
-            }
-            else if(this.equipmentList.get(i) instanceof Mic){
-                this.equipmentList.get(i).setting(((Mic) this.equipmentList.get(i)).modelName);
-                this.equipmentList.get(i).use(((Mic) this.equipmentList.get(i)).modelName);
-                ((Mic) this.equipmentList.get(i)).returnMic(((Mic) this.equipmentList.get(i)).modelName);
-            }
-            else if(this.equipmentList.get(i) instanceof Speaker){
-                this.equipmentList.get(i).setting(((Speaker) this.equipmentList.get(i)).modelName);
-                this.equipmentList.get(i).use(((Speaker) this.equipmentList.get(i)).modelName);
-            }
-            else {
-                this.equipmentList.get(i).setting((this.equipmentList.get(i)).modelName);
-                this.equipmentList.get(i).use((this.equipmentList.get(i)).modelName);
-            }
+        for(int i=0;i<this.cameraList.size();i++){
+            this.cameraList.get(i).setting(this.cameraList.get(i).modelName);
+            this.cameraList.get(i).use(this.cameraList.get(i).modelName);
         }
-        //장비가 하나 이상은 있어야할텐데 그건 어떻게 체크하지...
-
+        for(int i=0;i<this.computerList.size();i++){
+            this.computerList.get(i).setting(this.computerList.get(i).modelName);
+            this.computerList.get(i).use(this.computerList.get(i).modelName);
+        }
+        for(int i=0;i<this.micList.size();i++){
+            this.micList.get(i).setting(this.micList.get(i).modelName);
+            this.micList.get(i).use(this.micList.get(i).modelName);
+        }
+        for(int i=0;i<this.speakerList.size();i++) {
+            this.speakerList.get(i).setting(this.speakerList.get(i).modelName);
+            this.speakerList.get(i).use(this.speakerList.get(i).modelName);
+        }
     }
     @Override
     void working(){
@@ -88,40 +76,114 @@ public class BroadcastTeam extends Department{
     void buyEquipment(List<Equipment> equipmentList){
         for(int i=0;i<equipmentList.size();i++){
             if(equipmentList.get(i) instanceof Camera){
-                this.equipmentList.add((Camera) equipmentList.get(i));
+                this.cameraList.add((Camera) equipmentList.get(i));
             }
             else if(equipmentList.get(i) instanceof Computer){
-                this.equipmentList.add((Computer) equipmentList.get(i));
+                this.computerList.add((Computer) equipmentList.get(i));
             }
             else if(equipmentList.get(i) instanceof Mic){
-                this.equipmentList.add((Mic) equipmentList.get(i));
+                this.micList.add((Mic) equipmentList.get(i));
             }
             else if(equipmentList.get(i) instanceof Speaker){
-                this.equipmentList.add((Speaker) equipmentList.get(i));
+                this.speakerList.add((Speaker) equipmentList.get(i));
             }
             else{
-                this.equipmentList.add(equipmentList.get(i));
+                this.otherList.add(equipmentList.get(i));
             }
         }
     }
     void fixEquipment(Equipment equipment) {
-        if (this.equipmentList.contains(equipment)) {
-            System.out.println(equipment + "를 수리했습니다.");
-        } else {
-            System.out.println("보유하지 않은 장비입니다.");
+        if(equipment instanceof Camera){
+            if(this.cameraList.contains(equipment)){
+                System.out.println(equipment + "를 수리했습니다");
+            }
+            else{
+                System.out.println("보유하지 않은 장비입니다");
+            }
+        }
+        else if(equipment instanceof Computer){
+            if(this.computerList.contains(equipment)){
+                System.out.println(equipment + "를 수리했습니다");
+            }
+            else{
+                System.out.println("보유하지 않은 장비입니다");
+            }
+        }
+        else if(equipment instanceof Mic){
+            if(this.micList.contains(equipment)){
+                System.out.println(equipment + "를 수리했습니다");
+            }
+            else{
+                System.out.println("보유하지 않은 장비입니다");
+            }
+        }
+        else if(equipment instanceof Speaker){
+            if(this.speakerList.contains(equipment)){
+                System.out.println(equipment + "를 수리했습니다");
+            }
+            else{
+                System.out.println("보유하지 않은 장비입니다");
+            }
+        }
+        else{
+            if(this.otherList.contains(equipment)){
+                System.out.println(equipment + "를 수리했습니다");
+            }
+            else{
+                System.out.println("보유하지 않은 장비입니다");
+            }
         }
     }
     void throwEquipment(Equipment equipment){
-        if(this.equipmentList.contains(equipment)){
-            this.equipmentList.remove(equipment);
+        if(equipment instanceof Camera){
+            if(this.cameraList.contains(equipment)){
+                this.cameraList.remove(equipment);
+                System.out.println(equipment + "를 처분했습니다.");
+            }
+            else {
+                System.out.println("보유하지 않은 장비입니다.");
+            }
         }
-        else{
-            System.out.println("보유하지 않은 장비입니다.");
+        else if(equipment instanceof Computer){
+            if(this.computerList.contains(equipment)){
+                this.computerList.remove(equipment);
+                System.out.println(equipment + "를 처분했습니다.");
+            }
+            else {
+                System.out.println("보유하지 않은 장비입니다.");
+            }
+        }
+        else if(equipment instanceof Mic){
+            if(this.micList.contains(equipment)){
+                this.micList.remove(equipment);
+                System.out.println(equipment + "를 처분했습니다.");
+            }
+            else {
+                System.out.println("보유하지 않은 장비입니다.");
+            }
+        }
+        else if(equipment instanceof Speaker){
+            if(this.speakerList.contains(equipment)){
+                this.speakerList.remove(equipment);
+                System.out.println(equipment + "를 처분했습니다.");
+            }
+            else {
+                System.out.println("보유하지 않은 장비입니다.");
+            }
+        }
+        else {
+            if(this.otherList.contains(equipment)){
+                this.otherList.remove(equipment);
+                System.out.println(equipment + "를 처분했습니다.");
+            }
+            else {
+                System.out.println("보유하지 않은 장비입니다.");
+            }
         }
     }
 
     @Override
     public String toString(){
-        return "방송부의 인원은 "+member.toString()+"가 있으며 장비는 "+this.equipmentList.toString()+"이 있습니다.";
+        return "방송부의 인원은 "+member.toString()+"가 있으며 장비는 "+this.cameraList.toString()+this.computerList.toString()+this.micList.toString()+this.speakerList.toString()+"이 있습니다.";
     }
 }

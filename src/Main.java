@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         List<Department> team = new ArrayList<>();
 
         team.add(new BroadcastTeam());
