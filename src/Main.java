@@ -5,12 +5,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        List<Department> team = new ArrayList<>();
-
-        team.add(new BroadcastTeam());
-        team.add(new WorshipTeam());
-        BroadcastTeam gmbs = (BroadcastTeam) team.get(0);
-        WorshipTeam gmws = (WorshipTeam) team.get(1);
+        BroadcastTeam gmbs = new BroadcastTeam();
+        WorshipTeam gmws = new WorshipTeam();
 
         Person p1 = new Person("최범식",20,"m");
         Person p2 = new Person("홍길동",30,"m");
@@ -30,14 +26,25 @@ public class Main {
         gmws.setLeader(p2);
 
         Camera cam1 = new Camera("sony");
+        Camera cam2 = new Camera("canon");
         Computer com1 = new Computer("samsung");
+        Computer com2 = new Computer("LG");
         Mic mic1 = new Mic("sm58","dynamic");
         Mic mic2 = new Mic("beta58","condenser");
+        Mic mic3 = new Mic("sm57", "dynamic");
         Speaker sp1 = new Speaker("vp7212","active");
+        Speaker sp2 = new Speaker("eon600", "active");
 
-        List<Equipment> equipmentList = new ArrayList<>(Arrays.asList(cam1,com1,mic1,sp1,mic2));
+        List<Equipment> equipmentList = new ArrayList<>(Arrays.asList(cam1,cam2,com1,com2,mic1,mic2,mic3,sp1,sp2));
 
         gmbs.buyEquipment(equipmentList);
+        gmbs.fixComputer(com2);
+        gmbs.throwMic(mic3);
+        gmbs.throwMic("sm58");
+
+        List<Department> team = new ArrayList<>();
+        team.add(gmbs);
+        team.add(gmws);
 
         for(int i=0;i<team.size();i++){
             team.get(i).working();
