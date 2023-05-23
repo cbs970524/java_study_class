@@ -14,22 +14,22 @@ public class WorshipTeam extends Department{
 
     @Override
     void addNewMember(Person member) {
-        super.addNewMember(member);
+        this.member.add(member);
         System.out.println("찬양단 인원을 추가합니다.");
     }
     @Override
     void deleteMember(Person member) {
-        super.deleteMember(member);
+        this.member.remove(member);
         System.out.println(member + "를 찬양단 멤버에서 제거합니다.");
     }
     @Override
     void useMoney(int money) {
-        super.useMoney(money);
+        this.money-=money;
         System.out.println("찬양단에서" + money + "원을 지출합니다.");
     }
     @Override
     void addMoney(int money) {
-        super.addMoney(money);
+        this.money+=money;
         System.out.println("찬양단 재정에 "+money+ "원 적립되었습니다.");
     }
 

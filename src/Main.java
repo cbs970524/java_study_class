@@ -21,9 +21,10 @@ public class Main {
         gmws.addNewMember(p4);
         gmws.addNewMember(p5);
         gmws.addNewMember(p6);
+        gmws.deleteMember(p5);
 
         gmbs.setLeader(p1);
-        gmws.setLeader(p2);
+        gmws.setLeader(p4);
 
         Camera cam1 = new Camera("sony");
         Camera cam2 = new Camera("canon");
@@ -38,6 +39,7 @@ public class Main {
         List<Equipment> equipmentList = new ArrayList<>(Arrays.asList(cam1,cam2,com1,com2,mic1,mic2,mic3,sp1,sp2));
 
         gmbs.buyEquipment(equipmentList);
+        gmbs.fixCamera(cam1);
         gmbs.fixComputer(com2);
         gmbs.throwMic(mic3);
         gmbs.throwMic("sm58");

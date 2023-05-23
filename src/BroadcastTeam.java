@@ -15,7 +15,6 @@ public class BroadcastTeam extends Department{
         this.computerList = new ArrayList<>();
         this.micList = new ArrayList<>();
         this.speakerList = new ArrayList<>();
-
     }
     BroadcastTeam(ArrayList<Person> member, ArrayList<Equipment> camera, ArrayList<Equipment> computer, ArrayList<Equipment> mic, ArrayList<Equipment> speaker){
         this.member = member;
@@ -26,22 +25,22 @@ public class BroadcastTeam extends Department{
     }
     @Override
     void addNewMember(Person member){
-        super.addNewMember(member);
+        this.member.add(member);
         System.out.println("방송부 인원을 추가합니다.");
     }
     @Override
     void deleteMember(Person member){
-        super.deleteMember(member);
+        this.member.remove(member);
         System.out.println(member + "를 방송부 멤버에서 제거합니다.");
     }
     @Override
     void useMoney(int money){
-        super.useMoney(money);
+        this.money-=money;
         System.out.println("방송부에서" + money + "원을 지출합니다.");
     }
     @Override
     void addMoney(int money){
-        super.addMoney(money);
+        this.money+=money;
         System.out.println("방송부 재정에 "+money+ "원 적립되었습니다.");
     }
 
@@ -101,11 +100,11 @@ public class BroadcastTeam extends Department{
         }
         else {System.out.println("보유하지 않은 장비입니다.");}
     }
-    void fixCamera(String camera){
+    void fixCamera(String modelName){
         for(Equipment c : this.cameraList){
-            if(c.modelName.equals(camera)){
+            if(c.modelName.equals(modelName)){
                 c.normalState = true;
-                System.out.println(camera + "를 수리했습니다.");
+                System.out.println(modelName + "를 수리했습니다.");
                 return;
             }
         }
@@ -118,11 +117,11 @@ public class BroadcastTeam extends Department{
         }
         else {System.out.println("보유하지 않은 장비입니다.");}
     }
-    void fixComputer(String computer){
+    void fixComputer(String modelName){
         for(Equipment c : this.computerList){
-            if(c.modelName.equals(computer)){
+            if(c.modelName.equals(modelName)){
                 c.normalState = true;
-                System.out.println(computer + "를 수리했습니다.");
+                System.out.println(modelName + "를 수리했습니다.");
                 return;
             }
         }
@@ -152,11 +151,11 @@ public class BroadcastTeam extends Department{
         }
         else {System.out.println("보유하지 않은 장비입니다.");}
     }
-    void fixSpeaker(String speaker){
+    void fixSpeaker(String modelName){
         for(Equipment c : this.speakerList){
-            if(c.modelName.equals(speaker)){
+            if(c.modelName.equals(modelName)){
                 c.normalState = true;
-                System.out.println(speaker + "를 수리했습니다.");
+                System.out.println(modelName + "를 수리했습니다.");
                 return;
             }
         }

@@ -1,4 +1,4 @@
-public class Equipment {
+public abstract class Equipment {
     protected String modelName;
     String manufacturer;
     int price;
@@ -8,11 +8,7 @@ public class Equipment {
         this.modelName=modelName;
         this.normalState = true;
     }
-    void setting(String modelName){
-        System.out.println("장비를 세팅합니다.");
-    }
-    void use(String modelName){
-        System.out.println("장비를 사용합니다.");
-    }
+    abstract void setting(String modelName);
+    abstract void use(String modelName);
 
 }
